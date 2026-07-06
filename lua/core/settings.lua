@@ -85,7 +85,7 @@ settings["codecompanion_adapter"] = "openrouter"
 -- Valid values: `copilot`, `oai-compatible`.
 -- The hyphenated key `edit-prediction-source` is also accepted in user settings.
 ---@type "copilot"|"oai-compatible"
-settings["edit_prediction_source"] = "oai-compatible"
+settings["edit_prediction_source"] = "none"
 
 -- Default adapter for OpenAI-compatible edit prediction. Must be a key in `ai_adapters`.
 -- The hyphenated key `pred-adapter` is also accepted in user settings.

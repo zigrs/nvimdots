@@ -166,6 +166,10 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Resume last search"),
+		["n|<leader>fu"] = map_cr("Telescope undo")
+			:with_noremap()
+			:with_silent()
+			:with_desc("tool: Show undo history"),
 		["n|<leader>fR"] = map_callback(function()
 				if require("core.settings").search_backend == "fzf" then
 					require("fzf-lua").resume()
