@@ -1,5 +1,6 @@
 return function()
 	local icons = { ui = require("modules.utils.icons").get("ui", true) }
+	local actions = require("telescope.actions")
 	local lga_actions = require("telescope-live-grep-args.actions")
 
 	require("modules.utils").load_plugin("telescope", {
@@ -10,7 +11,7 @@ return function()
 				"--with-filename",
 				"--line-number",
 				"--column",
-				"--smart-case",
+				"--ignore-case",
 			},
 			initial_mode = "insert",
 			prompt_prefix = " " .. icons.ui.Telescope .. " ",
@@ -21,7 +22,7 @@ return function()
 			path_display = { "absolute" },
 			selection_strategy = "reset",
 			color_devicons = true,
-			file_ignore_patterns = { ".git/", ".cache", "build/", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
+			file_ignore_patterns = { "%.git/", "%.cache/", "build/", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
 			layout_config = {
 				horizontal = {
 					preview_width = 0.55,
@@ -45,7 +46,7 @@ return function()
 				fuzzy = false,
 				override_generic_sorter = true,
 				override_file_sorter = true,
-				case_mode = "smart_case",
+				case_mode = "ignore_case",
 			},
 			frecency = {
 				show_scores = true,
@@ -56,6 +57,7 @@ return function()
 				auto_quoting = true, -- enable/disable auto-quoting
 				mappings = { -- extend mappings
 					i = {
+						["<C-c><C-o>"] = actions.to_fuzzy_refine,
 						["<C-k>"] = lga_actions.quote_prompt(),
 						["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
 					},

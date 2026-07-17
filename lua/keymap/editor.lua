@@ -20,6 +20,7 @@ local mappings = {
 		["n|<A-S-q>"] = map_cr("q!"):with_desc("edit: Force quit"),
 
 		-- Builtins: Insert mode
+		["i|jk"] = map_cmd("<Esc>"):with_noremap():with_silent():with_desc("edit: Leave insert mode"),
 		["i|<C-u>"] = map_cmd("<C-G>u<C-U>"):with_noremap():with_desc("edit: Delete previous block"),
 		["i|<C-b>"] = map_cmd("<Left>"):with_noremap():with_desc("edit: Move cursor to left"),
 		["i|<C-a>"] = map_cmd("<ESC>^i"):with_noremap():with_desc("edit: Move cursor to line start"),
