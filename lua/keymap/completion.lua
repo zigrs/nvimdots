@@ -57,13 +57,6 @@ function M.lsp(buf)
 			:with_buffer(buf)
 			:with_desc("lsp: Rename in project range"),
 		["n|K"] = map_cr("Lspsaga hover_doc"):with_silent():with_buffer(buf):with_desc("lsp: Show doc"),
-		["n|<localleader>p"] = map_callback(function()
-				require("modules.utils.lsp_peek").open()
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_buffer(buf)
-			:with_desc("lsp: Peek definition and references"),
 		["nv|ga"] = map_cr("Lspsaga code_action")
 			:with_silent()
 			:with_buffer(buf)
@@ -72,7 +65,6 @@ function M.lsp(buf)
 			:with_silent()
 			:with_buffer(buf)
 			:with_desc("lsp: Preview definition"),
-		["n|,gd"] = map_cr("Lspsaga goto_definition"):with_silent():with_buffer(buf):with_desc("lsp: Goto definition"),
 		["n|gD"] = map_cr("Lspsaga goto_definition"):with_silent():with_buffer(buf):with_desc("lsp: Goto definition"),
 		["n|gh"] = map_callback(function()
 				helpers.picker("lsp_references")

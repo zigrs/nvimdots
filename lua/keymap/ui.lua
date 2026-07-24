@@ -7,10 +7,6 @@ local map_callback = bind.map_callback
 local mappings = {
 	builtins = {
 		-- Builtins: Buffer
-		["n|<leader>bb"] = map_cr("Telescope buffers")
-			:with_noremap()
-			:with_silent()
-			:with_desc("buffer: Switch"),
 		["n|<leader>bn"] = map_cu("enew"):with_noremap():with_silent():with_desc("buffer: New"),
 
 		-- Builtins: Terminal

@@ -20,7 +20,6 @@ local mappings = {
 		["n|<A-S-q>"] = map_cr("q!"):with_desc("edit: Force quit"),
 
 		-- Builtins: Insert mode
-		["i|jk"] = map_cmd("<Esc>"):with_noremap():with_silent():with_desc("edit: Leave insert mode"),
 		["i|<C-u>"] = map_cmd("<C-G>u<C-U>"):with_noremap():with_desc("edit: Delete previous block"),
 		["i|<C-b>"] = map_cmd("<Left>"):with_noremap():with_desc("edit: Move cursor to left"),
 		["i|<C-a>"] = map_cmd("<ESC>^i"):with_noremap():with_desc("edit: Move cursor to line start"),
@@ -102,32 +101,6 @@ local mappings = {
 		-- Plugin: diffview.nvim
 		["n|<leader>gd"] = map_cr("DiffviewOpen"):with_silent():with_noremap():with_desc("git: Show diff"),
 		["n|<leader>gD"] = map_cr("DiffviewClose"):with_silent():with_noremap():with_desc("git: Close diff"),
-
-		-- Plugin: flash.nvim
-		["nxo|s"] = map_callback(function()
-				require("flash").jump()
-			end)
-			:with_silent()
-			:with_noremap()
-			:with_desc("jump: Flash"),
-		["nxo|S"] = map_callback(function()
-				require("flash").treesitter()
-			end)
-			:with_silent()
-			:with_noremap()
-			:with_desc("jump: Flash treesitter"),
-		["o|r"] = map_callback(function()
-				require("flash").remote()
-			end)
-			:with_silent()
-			:with_noremap()
-			:with_desc("jump: Remote flash"),
-		["xo|R"] = map_callback(function()
-				require("flash").treesitter_search()
-			end)
-			:with_silent()
-			:with_noremap()
-			:with_desc("jump: Flash treesitter search"),
 
 		-- Plugin: hop.nvim
 		["nv|<leader>w"] = map_cmd("<Cmd>HopWordMW<CR>"):with_noremap():with_desc("jump: Goto word"),

@@ -10,17 +10,6 @@ return function()
 	local base_opts = use_fzf and { fzf_opts = { ["--layout"] = (prompt_pos == "top" and "reverse" or "default") } }
 		or {}
 
-	---Compiles space-separated patterns into an order-independent PCRE expression.
-	---@param prompt string
-	---@return string
-	local function orderless_pattern(prompt)
-		local patterns = {}
-		for pattern in prompt:gmatch("%S+") do
-			table.insert(patterns, "(?=.*" .. pattern .. ")")
-		end
-		return #patterns > 1 and "^" .. table.concat(patterns) or prompt
-	end
-
 	---Returns current directory and whether it's a Git repo root
 	---@return string @Current working directory
 	---@return boolean|nil @true if `.git` folder exists here, false if `.git` exists but isn't folder, nil if `.git` missing
@@ -72,20 +61,6 @@ return function()
 		end
 	end
 
-	local function orderless_grep()
-		local additional_args = { "--pcre2" }
-		if vim.uv.cwd() == vim_path then
-			table.insert(additional_args, "--no-ignore")
-		end
-		extensions.live_grep_args.live_grep_args({
-			additional_args = additional_args,
-			on_input_filter_cb = function(prompt)
-				return { prompt = orderless_pattern(prompt) }
-			end,
-			prompt_title = "Orderless Grep",
-		})
-	end
-
 	-- Tables of pickers
 	local pickers = {
 		file = {
@@ -102,11 +77,7 @@ return function()
 			{ "Buffers", builtins.buffers },
 		},
 		pattern = {
-			{
-				"Words in project",
-				use_fzf and grep_searcher("live_grep", extensions.live_grep_args.live_grep_args) or orderless_grep,
-			},
-			{ "Grep with args", grep_searcher("live_grep", extensions.live_grep_args.live_grep_args) },
+			{ "Word in project", grep_searcher("live_grep", extensions.live_grep_args.live_grep_args) },
 			{ "Word under cursor", grep_searcher("grep_cword", builtins.grep_string) },
 		},
 		git = {

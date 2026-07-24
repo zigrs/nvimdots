@@ -12,8 +12,6 @@ return function()
 		delay = vim.o.timeoutlen,
 		triggers = {
 			{ "<auto>", mode = "nixso" },
-			{ "<leader>", mode = { "n", "v" } },
-			{ "<localleader>", mode = { "n", "v" } },
 		},
 		plugins = {
 			marks = true,

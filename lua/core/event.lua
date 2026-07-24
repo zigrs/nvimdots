@@ -62,8 +62,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = require("core.settings").treesitter_deps,
 	callback = function(args)
 		vim.treesitter.start(args.buf)
-		vim.api.nvim_set_option_value("foldmethod", "expr", { scope = "local" })
-		vim.api.nvim_set_option_value("foldexpr", "v:lua.vim.treesitter.foldexpr()", { scope = "local" })
 	end,
 })
 
